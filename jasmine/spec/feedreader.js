@@ -3,7 +3,6 @@
  * This is the spec file that Jasmine will read and contains
  * all of the tests that will be run against your application.
  */
-
 /* We're placing all of our tests within the $() function,
  * since some of these tests may require DOM elements. We want
  * to ensure they don't run until the DOM is ready.
@@ -21,7 +20,6 @@ $(function () {
             expect(allFeeds).toBeDefined();
             expect(allFeeds.length).not.toBe(0);
         });
-
         /*  Test that loops through each feed
          * in the allFeeds object and ensures it has a URL defined
          * and that the URL is not empty.
@@ -30,10 +28,8 @@ $(function () {
             allFeeds.forEach(function (feed) {
                 expect(feed.url).toBeDefined();
                 expect(feed.url.length).not.toBe(0);
-
             });
         });
-
         /*  Test that loops through each feed
          * in the allFeeds object and ensures it has a name defined
          * and that the name is not empty.
@@ -45,20 +41,14 @@ $(function () {
             });
         });
     });
-
-
     /*  Test suite named "The menu" */
       describe('The Menu', function () {
-
         /* Test that ensures the menu element is
          * hidden by default.
          */
-        var body = document.body;
-        var menuIcon = document.querySelector(".menu-icon-link");
-        it('Menu hidden, submenu-hidden', function () {
-            expect(body.classList).toContain('menu-hidden');
-        });
-
+         it('Menu element is hidden by default', function() {
+               expect($('body').hasClass('menu-hidden')).toBe(true);
+           });
         /*  Test that ensures the menu changes
          * visibility when the menu icon is clicked.
          */
@@ -81,7 +71,6 @@ $(function () {
                   done();
               });
           });
-
            it('feed container has at least one entry', function(){
              var numEntry = document.querySelector(".feed").getElementsByClassName("entry").length;
              expect(numEntry).toBeGreaterThan(0);
@@ -89,7 +78,6 @@ $(function () {
          });
     /* Test suite named "New Feed Selection" */
     describe('New Feed Selection', function() {
-
         /* Test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
@@ -104,7 +92,6 @@ $(function () {
             });
         });
         it('the content changes by loadFeed()', function () {
-
             var newFeedSel = document.querySelector(".feed").innerHTML;
             expect(firstFeedSel).toBeDefined();
             expect(newFeedSel).toBeDefined();
